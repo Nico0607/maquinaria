@@ -39,7 +39,7 @@ public class Reservation implements Serializable{
     private Integer idReservation;
     private Calendar startDate;
     private Calendar devolutionDate;
-    private String status = "Created";
+    private String status = "created";
     
     @ManyToOne
     @JoinColumn(name = "machineId")
