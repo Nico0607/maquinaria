@@ -5,8 +5,8 @@
  */
 package com.rentamaquina.maquinaria.app.repositories;
 
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.repositories.crud.MachineCrudRepository;
+import com.rentamaquina.maquinaria.app.entities.Admin;
+import com.rentamaquina.maquinaria.app.repositories.crud.AdminCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,45 +18,45 @@ import org.springframework.stereotype.Repository;
  * @author Usuario
  */
 @Repository
-public class MachineRepository {
+public class AdminRepository {
     @Autowired
-    private MachineCrudRepository machineCrudRepository;
+    private AdminCrudRepository adminCrudRepository;
     
     /**
      * Select
      * @return 
      */
-    public List<Machine> getAll(){
-        return (List<Machine>) machineCrudRepository.findAll();
+    public List<Admin> getAll(){
+        return (List<Admin>) adminCrudRepository.findAll();
     }
     
     /**
      * Insert
-     * @param machine
+     * @param admin
      * @return 
      */
-    public Machine save(Machine machine){
-        return machineCrudRepository.save(machine);
+    public Admin save(Admin admin){
+        return adminCrudRepository.save(admin);
     }
     
     /**
      * Buscar Registro
-     * @param machineId
+     * @param adminId
      * @return 
      */
-    public Optional<Machine> getMachine(int machineId){
-        return machineCrudRepository.findById(machineId);
+    public Optional<Admin> getAdmin(int adminId){
+        return adminCrudRepository.findById(adminId);
     }
     
     /**
      * Delete
-     * @param machine 
+     * @param admin 
      */
-    public void delete(Machine machine){
-        machineCrudRepository.delete(machine);
+    public void delete(Admin admin){
+        adminCrudRepository.delete(admin);
     }
 
-    public Optional<Machine> getMachine() {
+    public Optional<Admin> getAdmin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

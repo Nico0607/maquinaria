@@ -6,10 +6,11 @@
 package com.rentamaquina.maquinaria.app.services;
 
 import com.rentamaquina.maquinaria.app.entities.Message;
-import com.rentamaquina.maquinaria.app.repositories.MessageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.rentamaquina.maquinaria.app.repositories.MessageRepository;
+import java.util.Optional;
 
 
 
@@ -24,43 +25,73 @@ public class MessageService {
     private MessageRepository repository;
     
     /**
-     * GET Consultar todos los Registros.
+     * GET
      * @return 
      */
-    public List<Message> getMessages(){
-        return repository.findAll();
-    }
-    
-    /**POST Crear o Registrar
-     * @param Message
-     * @return 
-     */
-    public Message saveClient(Message message){
-        /*Message existingMessage = repository.findById(message.getId()).orElse(null);
-        if(existingMessage==null){
-            repository.save(message);
-        }*/
-        return repository.save(message);
+    public List<Message> getAll(){
+        return repository.getAll();
     }
     
     /**
-     *PUT Actualizar o Editar
-     * @param Message
+     * buscar
+     * @param messageId
      * @return 
      */
-    public Message updateMessage(Message message){
-        /*Message existingMessage;
-        existingMessage = repository.findById(message.getId()).orElse(null);
-        existingMessage.setMessage(message.getMessage());*/
-        return null;
+    public Optional<Message> getMessage(int messageId){
+        return repository.getMessage();
     }
     
-    public String deleteMessage(int id){
-        repository.deleteById(id);
-        return "Mensaje eliminado" + id;
+    /**
+     * POST
+     * @param message
+     * @return 
+     */
+    public Message save(Message message){
+        if(message.getIdMessage()==null){
+            return repository.save(message);
+        }else{
+            Optional<Message> resultado = repository.getMessage(message.getIdMessage());
+            if(resultado.isPresent()){
+                return message;
+            }else{
+                return repository.save(message);
+            }
+        }
+    }
+    
+    /**
+     * Update
+     * @param message
+     * @return 
+     */
+    public Message update(Message message){
+        if(message.getIdMessage()!=null){
+            Optional<Message> resultado = repository.getMessage(message.getIdMessage());
+            if(resultado.isPresent()){
+                if(message.getMessageText()!=null){
+                    resultado.get().setMessageText(message.getMessageText());
+                }
+                repository.save(resultado.get());
+                return resultado.get();
+            }else{
+                return message;
+            }
+        }else{
+            return message;
+        }
+    }
+    
+    /**
+     * Delete
+     * @param messageId
+     * @return 
+     */
+    public boolean deleteMessage(int messageId){
+        Boolean aBoolean = getMessage(messageId).map(message -> {
+            repository.delete(message);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 
-    public void saveMessage(Message message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

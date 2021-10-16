@@ -5,12 +5,13 @@
  */
 package com.rentamaquina.maquinaria.app.repositories;
 
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.repositories.crud.MachineCrudRepository;
+import com.rentamaquina.maquinaria.app.entities.Score;
+import com.rentamaquina.maquinaria.app.repositories.crud.ScoreCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 
 /**
@@ -18,45 +19,45 @@ import org.springframework.stereotype.Repository;
  * @author Usuario
  */
 @Repository
-public class MachineRepository {
+public class ScoreRepository {
     @Autowired
-    private MachineCrudRepository machineCrudRepository;
+    private ScoreCrudRepository scoreCrudRepository;
     
     /**
      * Select
      * @return 
      */
-    public List<Machine> getAll(){
-        return (List<Machine>) machineCrudRepository.findAll();
+    public List<Score> getAll(){
+        return (List<Score>) scoreCrudRepository.findAll();
     }
     
     /**
      * Insert
-     * @param machine
+     * @param score
      * @return 
      */
-    public Machine save(Machine machine){
-        return machineCrudRepository.save(machine);
+    public Score save(Score score){
+        return scoreCrudRepository.save(score);
     }
     
     /**
      * Buscar Registro
-     * @param machineId
+     * @param scoreId
      * @return 
      */
-    public Optional<Machine> getMachine(int machineId){
-        return machineCrudRepository.findById(machineId);
+    public Optional<Score> getScore(int scoreId){
+        return scoreCrudRepository.findById(scoreId);
     }
     
     /**
      * Delete
-     * @param machine 
+     * @param score 
      */
-    public void delete(Machine machine){
-        machineCrudRepository.delete(machine);
+    public void delete(Score score){
+        scoreCrudRepository.delete(score);
     }
 
-    public Optional<Machine> getMachine() {
+    public Optional<Score> getScore() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

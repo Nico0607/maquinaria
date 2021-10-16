@@ -5,8 +5,9 @@
  */
 package com.rentamaquina.maquinaria.app.controllers;
 
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.services.MachineService;
+import com.rentamaquina.maquinaria.app.entities.Reservation;
+import com.rentamaquina.maquinaria.app.services.ReservationService;
+import com.rentamaquina.maquinaria.app.services.ReservationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,99 +22,86 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/*
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.services.MachineService;
-
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-*/
 /**
  *
  * @author Usuario
  */
 @RestController
-@RequestMapping("Machine")
-public class MachineController {
-    
+@RequestMapping("Reservation")
+public class ReservationController {
     
     @Autowired
-    private MachineService service;
+    private ReservationService service;
     
     /**
      * GET
      * @return 
      */
     @GetMapping("/all")
-    public List<Machine> getMachines(){
+    public List<Reservation> getReservations(){
         return service.getAll();
     }
     
     /**
      * POST
-     * @param machine
+     * @param reservation
      * @return 
      */
     @PostMapping("/save")
     /*@ResponseStatus(HttpStatus.CREATED)
-    public Machine save(@RequestBody Machine machine){
-        return service.save(machine);
+    public Reservation save(@RequestBody Reservation reservation){
+        return service.save(reservation);
     }*/
-    public ResponseEntity save(@RequestBody Machine machine){
-        service.save(machine);
+    public ResponseEntity save(@RequestBody Reservation reservation){
+        service.save(reservation);
         return ResponseEntity.status(201).build();
     }
     
     /**
      * PUT
-     * @param machine
+     * @param reservation
      * @return 
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Machine update(@RequestBody Machine machine){
-        return service.update(machine);
+    public Reservation update(@RequestBody Reservation reservation){
+        return service.update(reservation);
     }
     
     /**
      * Delete
-     * @param machineId
+     * @param reservationId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int machineId){
-        return service.deleteMachine(machineId);
+    public boolean delete(@PathVariable("id") int reservationId){
+        return service.deleteReservation(reservationId);
     }
-    /*@Autowired
-    private MachineService service;
+    /*
+    @Autowired
+    private ReservationService service;
     
     @GetMapping("/all")
-    public List<Machine> findAllMachine(){
-        return service.getMachines();
+    public List<Reservation> findAllReservation(){
+        return service.getReservations();
     }
     
     @PostMapping("/save")
-    public ResponseEntity addMachine(@RequestBody Machine machine){
-        service.saveMachine(machine);
+    public ResponseEntity addReservation(@RequestBody Reservation reservation){
+        service.saveReservation(reservation);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
-    public ResponseEntity updateMachine(@RequestBody Machine machine){
-        service.saveMachine(machine);
+    public ResponseEntity updateReservation(@RequestBody Reservation reservation){
+        service.updateReservation(reservation);
         return ResponseEntity.status(201).build();
     }
     
     @DeleteMapping("/delete")
-    public ResponseEntity deleteMachine(@RequestBody Machine machine){
-        service.deleteMachine(machine.getId());
+    public ResponseEntity deleteReservation(@RequestBody Reservation reservation){
+        service.deleteReservation(reservation.getIdReservation());
         return ResponseEntity.status(204).build();
     }*/
+    
 }

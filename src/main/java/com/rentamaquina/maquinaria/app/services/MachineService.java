@@ -6,10 +6,11 @@
 package com.rentamaquina.maquinaria.app.services;
 
 import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.repositories.MachineRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.rentamaquina.maquinaria.app.repositories.MachineRepository;
+import java.util.Optional;
 
 /*
 import com.rentamaquina.maquinaria.app.entities.Machine;
@@ -30,41 +31,80 @@ public class MachineService {
     private MachineRepository repository;
     
     /**
-     * GET Consultar todos los Registros.
+     * GET
      * @return 
      */
-    public List<Machine> getMachines(){
-        return repository.findAll();
-    }
-    
-    /**POST Crear o Registrar
-     * @param machine
-     * @return 
-     */
-    public Machine saveMachine(Machine machine){
-        Machine existingMachine = repository.findById(machine.getId()).orElse(null);
-        if(existingMachine==null){
-            repository.save(machine);
-        }
-        return repository.save(machine);
+    public List<Machine> getAll(){
+        return repository.getAll();
     }
     
     /**
-     *PUT Actualizar o Editar
+     * buscar
+     * @param machineId
+     * @return 
+     */
+    public Optional<Machine> getMachine(int machineId){
+        return repository.getMachine();
+    }
+    
+    /**
+     * POST
      * @param machine
      * @return 
      */
-    public Machine updateMachine(Machine machine){
-        Machine existingMachine = repository.findById(machine.getId()).orElse(null);
-        existingMachine.setName(machine.getName());
-        existingMachine.setBrand(machine.getBrand());
-        existingMachine.setModel(machine.getModel());
-        existingMachine.setCategory_id(machine.getCategory_id());
-        return  repository.save(existingMachine);
+    public Machine save(Machine machine){
+        if(machine.getId()==null){
+            return repository.save(machine);
+        }else{
+            Optional<Machine> resultado = repository.getMachine(machine.getId());
+            if(resultado.isPresent()){
+                return machine;
+            }else{
+                return repository.save(machine);
+            }
+        }
     }
     
-    public String deleteMachine(int id){
-        repository.deleteById(id);
-        return "Maquina eliminada" + id;
+    /**
+     * Update
+     * @param machine
+     * @return 
+     */
+    public Machine update(Machine machine){
+        if(machine.getId()!=null){
+            Optional<Machine> resultado = repository.getMachine(machine.getId());
+            if(resultado.isPresent()){
+                if(machine.getBrand()!=null){
+                    resultado.get().setBrand(machine.getBrand());
+                }if(machine.getYear()!=null){
+                    resultado.get().setYear(machine.getYear());
+                }if(machine.getCategory()!=null){
+                    resultado.get().setCategory(machine.getCategory());
+                }if(machine.getName()!=null){
+                    resultado.get().setName(machine.getName());
+                }if(machine.getDescription()!=null){
+                    resultado.get().setCategory(machine.getCategory());
+                }
+                repository.save(resultado.get());
+                return resultado.get();
+            }else{
+                return machine;
+            }
+        }else{
+            return machine;
+        }
+    }
+    
+    /**
+     * Delete
+     * @param machineId
+     * @return 
+     */
+    public boolean deleteMachine(int machineId){
+        Boolean aBoolean = getMachine(machineId).map(machine -> {
+            repository.delete(machine);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 }

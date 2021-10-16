@@ -5,8 +5,8 @@
  */
 package com.rentamaquina.maquinaria.app.controllers;
 
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.services.MachineService;
+import com.rentamaquina.maquinaria.app.entities.Score;
+import com.rentamaquina.maquinaria.app.services.ScoreService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,99 +21,83 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/*
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.services.MachineService;
-
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-*/
 /**
  *
  * @author Usuario
  */
 @RestController
-@RequestMapping("Machine")
-public class MachineController {
-    
+@RequestMapping("Score")
+public class ScoreController {
     
     @Autowired
-    private MachineService service;
+    private ScoreService service;
     
     /**
      * GET
      * @return 
      */
     @GetMapping("/all")
-    public List<Machine> getMachines(){
+    public List<Score> getScores(){
         return service.getAll();
     }
     
     /**
      * POST
-     * @param machine
+     * @param score
      * @return 
      */
     @PostMapping("/save")
     /*@ResponseStatus(HttpStatus.CREATED)
-    public Machine save(@RequestBody Machine machine){
-        return service.save(machine);
+    public Score save(@RequestBody Score score){
+        return service.save(score);
     }*/
-    public ResponseEntity save(@RequestBody Machine machine){
-        service.save(machine);
+    public ResponseEntity save(@RequestBody Score score){
+        service.save(score);
         return ResponseEntity.status(201).build();
     }
-    
     /**
      * PUT
-     * @param machine
+     * @param score
      * @return 
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Machine update(@RequestBody Machine machine){
-        return service.update(machine);
+    public Score update(@RequestBody Score score){
+        return service.update(score);
     }
     
     /**
      * Delete
-     * @param machineId
+     * @param scoreId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int machineId){
-        return service.deleteMachine(machineId);
+    public boolean delete(@PathVariable("id") int scoreId){
+        return service.deleteScore(scoreId);
     }
     /*@Autowired
-    private MachineService service;
+    private ScoreService service;
     
     @GetMapping("/all")
-    public List<Machine> findAllMachine(){
-        return service.getMachines();
+    public List<Score> findAllScore(){
+        return service.getCategories();
     }
     
     @PostMapping("/save")
-    public ResponseEntity addMachine(@RequestBody Machine machine){
-        service.saveMachine(machine);
+    public ResponseEntity addScore(@RequestBody Score score){
+        service.saveScore(score);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
-    public ResponseEntity updateMachine(@RequestBody Machine machine){
-        service.saveMachine(machine);
+    public ResponseEntity updateScore(@RequestBody Score score){
+        service.updateScore(score);
         return ResponseEntity.status(201).build();
     }
     
     @DeleteMapping("/delete")
-    public ResponseEntity deleteMachine(@RequestBody Machine machine){
-        service.deleteMachine(machine.getId());
+    public ResponseEntity deleteScore(@RequestBody Score score){
+        service.deleteScore(score.getId());
         return ResponseEntity.status(204).build();
     }*/
 }

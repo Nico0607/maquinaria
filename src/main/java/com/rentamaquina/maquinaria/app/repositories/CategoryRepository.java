@@ -5,8 +5,8 @@
  */
 package com.rentamaquina.maquinaria.app.repositories;
 
-import com.rentamaquina.maquinaria.app.entities.Machine;
-import com.rentamaquina.maquinaria.app.repositories.crud.MachineCrudRepository;
+import com.rentamaquina.maquinaria.app.entities.Category;
+import com.rentamaquina.maquinaria.app.repositories.crud.CategoryCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,45 +18,45 @@ import org.springframework.stereotype.Repository;
  * @author Usuario
  */
 @Repository
-public class MachineRepository {
+public class CategoryRepository {
     @Autowired
-    private MachineCrudRepository machineCrudRepository;
+    private CategoryCrudRepository categoryCrudRepository;
     
     /**
      * Select
      * @return 
      */
-    public List<Machine> getAll(){
-        return (List<Machine>) machineCrudRepository.findAll();
+    public List<Category> getAll(){
+        return (List<Category>) categoryCrudRepository.findAll();
     }
     
     /**
      * Insert
-     * @param machine
+     * @param category
      * @return 
      */
-    public Machine save(Machine machine){
-        return machineCrudRepository.save(machine);
+    public Category save(Category category){
+        return categoryCrudRepository.save(category);
     }
     
     /**
      * Buscar Registro
-     * @param machineId
+     * @param categoryId
      * @return 
      */
-    public Optional<Machine> getMachine(int machineId){
-        return machineCrudRepository.findById(machineId);
+    public Optional<Category> getCategory(int categoryId){
+        return categoryCrudRepository.findById(categoryId);
     }
     
     /**
      * Delete
-     * @param machine 
+     * @param category 
      */
-    public void delete(Machine machine){
-        machineCrudRepository.delete(machine);
+    public void delete(Category category){
+        categoryCrudRepository.delete(category);
     }
 
-    public Optional<Machine> getMachine() {
+    public Optional<Category> getCategory() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
