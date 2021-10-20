@@ -84,29 +84,5 @@ public class ScoreController {
     public boolean delete(@PathVariable("id") int scoreId){
         return service.deleteScore(scoreId);
     }
-    /*@Autowired
-    private ScoreService service;
     
-    @GetMapping("/all")
-    public List<Score> findAllScore(){
-        return service.getCategories();
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity addScore(@RequestBody Score score){
-        service.saveScore(score);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @PutMapping("/update")
-    public ResponseEntity updateScore(@RequestBody Score score){
-        service.updateScore(score);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteScore(@RequestBody Score score){
-        service.deleteScore(score.getId());
-        return ResponseEntity.status(204).build();
-    }*/
 }

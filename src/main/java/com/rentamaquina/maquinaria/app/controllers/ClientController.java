@@ -86,29 +86,5 @@ public class ClientController {
     public boolean delete(@PathVariable("id") int clientId){
         return service.deleteClient(clientId);
     }
-    /*@Autowired
-    private ClientService service;
     
-    @GetMapping("/all")
-    public List<Client> findAllClient(){
-        return service.getClients();
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity addClient(@RequestBody Client client){
-        service.saveClient(client);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @PutMapping("/update")
-    public ResponseEntity updateClient(@RequestBody Client client){
-        service.updateClient(client);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteClient(@RequestBody Client client){
-        service.deleteClient(client.getIdClient());
-        return ResponseEntity.status(204).build();
-    }*/
 }

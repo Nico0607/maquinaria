@@ -83,29 +83,5 @@ public class CategoryController {
     public boolean delet(@PathVariable("id") int categoryId){
         return service.deleteCategory(categoryId);
     }
-    /*@Autowired
-    private CategoryService service;
     
-    @GetMapping("/all")
-    public List<Category> findAllCategory(){
-        return service.getCategories();
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity addCategory(@RequestBody Category category){
-        service.saveCategory(category);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @PutMapping("/update")
-    public ResponseEntity updateCategory(@RequestBody Category category){
-        service.updateCategory(category);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteCategory(@RequestBody Category category){
-        service.deleteCategory(category.getId());
-        return ResponseEntity.status(204).build();
-    }*/
 }

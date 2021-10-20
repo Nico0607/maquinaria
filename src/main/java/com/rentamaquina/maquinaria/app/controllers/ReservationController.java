@@ -86,31 +86,5 @@ public class ReservationController {
     public boolean delete(@PathVariable("id") int reservationId){
         return service.deleteReservation(reservationId);
     }
-    /*
-    @Autowired
-    private ReservationService service;
-    
-    @GetMapping("/all")
-    public List<Reservation> findAllReservation(){
-        return service.getReservations();
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity addReservation(@RequestBody Reservation reservation){
-        service.saveReservation(reservation);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @PutMapping("/update")
-    public ResponseEntity updateReservation(@RequestBody Reservation reservation){
-        service.updateReservation(reservation);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteReservation(@RequestBody Reservation reservation){
-        service.deleteReservation(reservation.getIdReservation());
-        return ResponseEntity.status(204).build();
-    }*/
     
 }

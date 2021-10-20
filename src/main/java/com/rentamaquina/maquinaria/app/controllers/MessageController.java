@@ -85,29 +85,5 @@ public class MessageController {
     public boolean delete(@PathVariable("id") int messageId){
         return service.deleteMessage(messageId);
     }
-    /*@Autowired
-    private MessageService service;
     
-    @GetMapping("/all")
-    public List<Message> findAllMessage(){
-        return service.getMessages();
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity addMessage(@RequestBody Message message){
-        service.saveMessage(message);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @PutMapping("/update")
-    public ResponseEntity updateMessage(@RequestBody Message message){
-        service.updateMessage(message);
-        return ResponseEntity.status(201).build();
-    }
-    
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteMessage(@RequestBody Message message){
-        service.deleteMessage(message.getIdMessage());
-        return ResponseEntity.status(204).build();
-    }*/
 }
