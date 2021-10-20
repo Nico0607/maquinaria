@@ -62,9 +62,13 @@ public class AdminController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Admin update(@RequestBody Admin admin){
         return service.update(admin);
+    }*/
+    public ResponseEntity update(@RequestBody Admin admin){
+        service.update(admin);
+        return ResponseEntity.status(201).build();
     }
     
     /**
@@ -72,11 +76,15 @@ public class AdminController {
      * @param adminId
      * @return 
      */
+    /*@DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int adminId){
+        return service.deleteAdmin(adminId);
+    }*/
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int adminId){
         return service.deleteAdmin(adminId);
     }
-    
     /*
     @GetMapping("/all")
     public List<Category> findAllCategory(){

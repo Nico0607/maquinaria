@@ -63,9 +63,13 @@ public class ReservationController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Reservation update(@RequestBody Reservation reservation){
         return service.update(reservation);
+    }*/
+    public ResponseEntity update(@RequestBody Reservation reservation){
+        service.update(reservation);
+        return ResponseEntity.status(201).build();
     }
     
     /**
@@ -73,7 +77,12 @@ public class ReservationController {
      * @param reservationId
      * @return 
      */
+    /*@DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int reservationId){
+        return service.deleteReservation(reservationId);
+    }*/
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId){
         return service.deleteReservation(reservationId);
     }

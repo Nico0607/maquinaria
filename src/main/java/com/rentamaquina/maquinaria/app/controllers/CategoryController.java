@@ -61,9 +61,13 @@ public class CategoryController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Category update(@RequestBody Category category){
         return service.update(category);
+    }*/
+    public ResponseEntity update(@RequestBody Category category){
+        service.update(category);
+        return ResponseEntity.status(201).build();
     }
     
     /**
@@ -72,7 +76,11 @@ public class CategoryController {
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int categoryId){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    /*public boolean delete(@PathVariable("id") int categoryId){
+        return service.deleteCategory(categoryId);
+    }*/
+    public boolean delet(@PathVariable("id") int categoryId){
         return service.deleteCategory(categoryId);
     }
     /*@Autowired

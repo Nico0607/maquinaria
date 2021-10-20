@@ -61,9 +61,13 @@ public class ScoreController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Score update(@RequestBody Score score){
         return service.update(score);
+    }*/
+    public ResponseEntity update(@RequestBody Score score){
+        service.update(score);
+        return ResponseEntity.status(201).build();
     }
     
     /**
@@ -71,7 +75,12 @@ public class ScoreController {
      * @param scoreId
      * @return 
      */
+    /*@DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int scoreId){
+        return service.deleteScore(scoreId);
+    }*/
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int scoreId){
         return service.deleteScore(scoreId);
     }

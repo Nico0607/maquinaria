@@ -77,17 +77,25 @@ public class MachineController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Machine update(@RequestBody Machine machine){
         return service.update(machine);
+    }*/
+    public ResponseEntity update(@RequestBody Machine machine){
+        service.update(machine);
+        return ResponseEntity.status(201).build();
     }
-    
     /**
      * Delete
      * @param machineId
      * @return 
      */
+    /*@DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int machineId){
+        return service.deleteMachine(machineId);
+    }*/
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int machineId){
         return service.deleteMachine(machineId);
     }

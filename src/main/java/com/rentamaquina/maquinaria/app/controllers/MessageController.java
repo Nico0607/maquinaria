@@ -62,9 +62,13 @@ public class MessageController {
      * @return 
      */
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    /*@ResponseStatus(HttpStatus.CREATED)
     public Message update(@RequestBody Message message){
         return service.update(message);
+    }*/
+    public ResponseEntity update(@RequestBody Message message){
+        service.update(message);
+        return ResponseEntity.status(201).build();
     }
     
     /**
@@ -72,7 +76,12 @@ public class MessageController {
      * @param messageId
      * @return 
      */
+    /*@DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int messageId){
+        return service.deleteMessage(messageId);
+    }*/
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int messageId){
         return service.deleteMessage(messageId);
     }
