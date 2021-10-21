@@ -44,7 +44,7 @@ public class MachineService {
      * @return 
      */
     public Optional<Machine> getMachine(int machineId){
-        return repository.getMachine();
+        return repository.getMachine(machineId);
     }
     
     /**
@@ -83,7 +83,7 @@ public class MachineService {
                 }if(machine.getName()!=null){
                     resultado.get().setName(machine.getName());
                 }if(machine.getDescription()!=null){
-                    resultado.get().setCategory(machine.getCategory());
+                    resultado.get().setDescription(machine.getDescription());
                 }
                 repository.save(resultado.get());
                 return resultado.get();

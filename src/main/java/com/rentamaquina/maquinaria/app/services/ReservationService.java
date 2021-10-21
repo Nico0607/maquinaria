@@ -35,7 +35,7 @@ public class ReservationService {
      * @return 
      */
     public Optional<Reservation> getReservation(int reservationId){
-        return repository.getReservation();
+        return repository.getReservation(reservationId);
     }
     
     /**

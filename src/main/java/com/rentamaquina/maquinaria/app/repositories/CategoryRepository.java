@@ -56,7 +56,5 @@ public class CategoryRepository {
         categoryCrudRepository.delete(category);
     }
 
-    public Optional<Category> getCategory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }

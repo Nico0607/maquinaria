@@ -35,7 +35,7 @@ public class ScoreService {
      * @return 
      */
     public Optional<Score> getScore(int scoreId){
-        return repository.getScore();
+        return repository.getScore(scoreId);
     }
     
     /**

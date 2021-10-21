@@ -35,7 +35,7 @@ public class AdminService {
      * @return 
      */
     public Optional<Admin> getAdmin(int adminId){
-        return repository.getAdmin();
+        return repository.getAdmin(adminId);
     }
     
     /**

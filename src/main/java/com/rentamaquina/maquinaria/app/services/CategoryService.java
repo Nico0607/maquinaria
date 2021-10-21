@@ -35,7 +35,7 @@ public class CategoryService {
      * @return 
      */
     public Optional<Category> getCategory(int categoryId){
-        return repository.getCategory();
+        return repository.getCategory(categoryId);
     }
     
     /**

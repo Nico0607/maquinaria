@@ -56,8 +56,4 @@ public class ClientRepository {
     public void delete(Client client){
         clientCrudRepository.delete(client);
     }
-
-    public Optional<Client> getClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

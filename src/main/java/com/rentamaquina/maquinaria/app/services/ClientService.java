@@ -38,7 +38,7 @@ public class ClientService {
      * @return 
      */
     public Optional<Client> getClient(int clientId){
-        return repository.getClient();
+        return repository.getClient(clientId);
     }
     
     /**
@@ -68,12 +68,12 @@ public class ClientService {
         if(client.getIdClient()!=null){
             Optional<Client> resultado = repository.getClient(client.getIdClient());
             if(resultado.isPresent()){
-                if(client.getName()!=null){
-                    resultado.get().setName(client.getName());
-                }if(client.getEmail()!=null){
+                if(client.getEmail()!=null){
                     resultado.get().setEmail(client.getEmail());
                 }if(client.getPassword()!=null){
                     resultado.get().setPassword(client.getPassword());
+                }if(client.getName()!=null){
+                    resultado.get().setName(client.getName());
                 }if(client.getAge()!=null){
                     resultado.get().setAge(client.getAge());
                 }

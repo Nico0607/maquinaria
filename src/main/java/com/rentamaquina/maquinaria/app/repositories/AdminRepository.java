@@ -55,8 +55,4 @@ public class AdminRepository {
     public void delete(Admin admin){
         adminCrudRepository.delete(admin);
     }
-
-    public Optional<Admin> getAdmin() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

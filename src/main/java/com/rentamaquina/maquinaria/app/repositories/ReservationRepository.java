@@ -55,8 +55,4 @@ public class ReservationRepository {
     public void delete(Reservation reservation){
         reservationCrudRepository.delete(reservation);
     }
-
-    public Optional<Reservation> getReservation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

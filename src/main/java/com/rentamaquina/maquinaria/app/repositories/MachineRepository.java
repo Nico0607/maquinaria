@@ -55,8 +55,4 @@ public class MachineRepository {
     public void delete(Machine machine){
         machineCrudRepository.delete(machine);
     }
-
-    public Optional<Machine> getMachine() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

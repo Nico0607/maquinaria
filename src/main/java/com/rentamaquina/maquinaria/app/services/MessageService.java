@@ -38,7 +38,7 @@ public class MessageService {
      * @return 
      */
     public Optional<Message> getMessage(int messageId){
-        return repository.getMessage();
+        return repository.getMessage(messageId);
     }
     
     /**

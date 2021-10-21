@@ -58,8 +58,4 @@ public class MessageRepository {
     public void delete(Message message){
         messageCrudRepository.delete(message);
     }
-
-    public Optional<Message> getMessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
